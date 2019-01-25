@@ -8,7 +8,6 @@ The data source utilizes a subset of the TMDB data set on Films, Companies, Coun
 ## Prereq's
 * Install sfdx
 * Get you a dev hub org
-* 
 
 ## Dev, Build and Test
 
