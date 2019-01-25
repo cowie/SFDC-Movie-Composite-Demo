@@ -14,7 +14,7 @@ The data source utilizes a subset of the TMDB data set on Films, Companies, Coun
 
 * git clone dis
 * set up sfdx - if you ain't already, get on the bandwagon and come back.
-* run automation.sh to provision scratch, do push, do permset, dataload, script to set the org up
+* sh automagic/automation.sh - take a look first make sure I'm not blowin yo stuf up, but basically it'll create a default scratch for you, deploy source, set up your permsets, and load some datas and run some more scripts. Maybe takes like 5m or so, so grab a quick coffee.
 
 ## Resources
 
