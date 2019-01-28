@@ -137,6 +137,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>temp_Cast__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>temp_Genre__c</field>
             </layoutItems>
             <layoutItems>

@@ -4,6 +4,41 @@ public class movieNormalizerScripts {
         public string id;
         public string name;
         public string iso_3166_1;
+        public string gender;
+        public integer order;
+        public string credit_id;
+        public string character;
+        public string cast_id;
+    }
+
+    public static void processTalentLinks (List<Movie__c> mList){
+        /*
+            For each movie
+            Grab the list of JSON items in the array
+            Create 1 Cast__c per item against the movie
+            Add to the Cast__c list, move it along.
+            Ignore that I probably coulda just written this to overload. I'm lazy. C+P is easier.
+        */
+        List<Cast__c> mgList = new list<Cast__c>();
+        for(Movie__c m : mList){
+            string movieID = m.External_Id__c;
+            string jsonArray = m.temp_cast__c;
+            List<midObj> midList = (List<midObj>)JSON.deserialize(jsonArray, List<midObj>.class);
+            for(midObj o : midList){
+                Talent__c g = new Talent__c(External_Id__c=o.id);
+
+                Cast__c mg = new Cast__c(Movie__c = m.id, Talent__r = g, gender__c = o.gender, 
+                                        order__c = o.order, credit_id__c = o.credit_id, 
+                                        character__c = o.character, cast_id__c = o.cast_id);
+                if(mg.credit_id__c !=null)
+                    mgList.add(mg);
+            }
+        }
+        try{
+        insert mgList;
+        }catch(DMLException e){
+            system.debug(e.getMessage());
+        }
     }
 
     public static void processGenreLinks (List<Movie__c> mList){
@@ -48,7 +83,6 @@ public class movieNormalizerScripts {
                 Keyword__c g = new Keyword__c(External_Id__c=o.id);
                 MovieKeyword__c mg = new MovieKeyword__c(Movie__c = m.id, Keyword__r = g);
                 mgList.add(mg);
-                if(o.id == string.valueOf(10842)) system.debug('huh, 10482 - ' + o.name + ' - ' + m.name);
             }
         }
         try{
@@ -83,6 +117,8 @@ public class movieNormalizerScripts {
             system.debug(e.getMessage());
         }
     }
+
+    
 
     public static void processCountryLinks (List<Movie__c> mList){
         /*

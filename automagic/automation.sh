@@ -7,7 +7,6 @@ sfdx force:data:bulk:upsert -s Production_Company__c -f data/prepared/Production
 sfdx force:data:bulk:upsert -s Genre__c -f data/prepared/Genre__c.csv -i external_id__c -w 1
 sfdx force:data:bulk:upsert -s Keyword__c -f data/prepared/Keyword__c.csv -i external_id__c -w 1
 sfdx force:data:bulk:upsert -s Movie__c -f data/prepared/Movie__c.csv -i external_id__c -w 1
-sfdx force:apex:execute -f automagic/linkGenres.apex
-sfdx force:apex:execute -f automagic/linkKeywords.apex
-sfdx force:apex:execute -f automagic/linkCompanies.apex
-sfdx force:apex:execute -f automagic/linkCountries.apex
+sfdx force:data:bulk:upsert -s Talent__c -f data/prepared/Talent__c.csv -i external_id__c -w 2
+sfdx force:apex:execute -f automagic/linkJunctions.apex
+sfdx force:apex:execute -f automagic/linkCastings.apex
