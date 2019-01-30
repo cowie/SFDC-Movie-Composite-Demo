@@ -173,6 +173,15 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>Order__c</fields>
+        <fields>Character__c</fields>
+        <fields>Talent__c</fields>
+        <relatedList>Cast__c.Movie__c</relatedList>
+        <sortField>Order__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
         <fields>Genre__c.NAME</fields>
         <fields>Genre__c.External_ID__c</fields>
         <relatedList>MovieGenre__c.Movie__c</relatedList>
