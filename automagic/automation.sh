@@ -13,3 +13,4 @@ sfdx force:data:bulk:upsert -s Movie__c -f data/prepared/Movie__c.csv -i externa
 sfdx force:data:bulk:upsert -s Talent__c -f data/prepared/Talent__c.csv -i external_id__c -w 2
 sfdx force:apex:execute -f automagic/linkJunctions.apex
 sfdx force:apex:execute -f automagic/linkCastings.apex
+echo All done! This is a good time to go run the Heroku side of the coin now in that repo. Tootles.
